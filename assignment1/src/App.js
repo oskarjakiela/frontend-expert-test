@@ -1,12 +1,14 @@
 import axios from 'axios';
-import { compose, map, pathOr, pick } from 'ramda';
+import { pathOr, pick } from 'ramda';
 import React, { Component } from 'react';
 
 import './App.css';
 import { API_URL } from './constants';
+import ResultsList from './ResultsList';
 
 
 class App extends Component {
+
   componentDidMount() {
     axios.get(API_URL)
       .then(pick(['data']))
@@ -14,14 +16,13 @@ class App extends Component {
   }
 
   render() {
-    const renderResults = compose(
-      map(({ id, name }) => <div key={id}>{ name }</div>),
-      pathOr([], ['data', 'rows'])
-    );
+    const items = pathOr([], ['data', 'rows'])(this.state);
 
     return (
       <div className="App">
-        { renderResults(this.state) }
+        <div className="App__aside">
+          <ResultsList items={items} />
+        </div>
       </div>
     );
   }

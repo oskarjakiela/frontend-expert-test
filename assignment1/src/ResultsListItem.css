@@ -1,0 +1,29 @@
+.ResultsListItem {
+  border-bottom: 1px solid rgba(0, 0, 0, .1);
+  padding: 1rem;
+}
+
+.ResultsListItem:last-child {
+  border-bottom: 0;
+}
+
+.ResultsListItem__city,
+.ResultsListItem__name,
+.ResultsListItem__venue {
+  margin: 0;
+  font-weight: normal;
+  line-height: 1.5;
+}
+
+.ResultsListItem__city {
+  color: rgba(0, 0, 0, .5);
+  text-transform: uppercase;
+}
+
+.ResultsListItem__name {
+  font-size: 1.5rem;
+}
+
+.ResultsListItem__venue {
+  font-size: 1.25rem;
+}

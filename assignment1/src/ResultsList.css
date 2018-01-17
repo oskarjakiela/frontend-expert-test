@@ -1,0 +1,16 @@
+.ResultsList {
+  padding: 1rem;
+}
+
+.ResultsList__title {
+  line-height: 1.5;
+  font-size: 2rem;
+  font-weight: normal;
+  color: #00bcd4;
+}
+
+.ResultsList__items {
+  margin-right: -1rem;
+  margin-left: -1rem;
+}
+

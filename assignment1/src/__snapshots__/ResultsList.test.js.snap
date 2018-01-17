@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ResultsList /> when there isn't any item renders correctly 1`] = `
+<div
+  className="ResultsList"
+>
+  <h2
+    className="ResultsList__title"
+  >
+    Result List
+  </h2>
+  <div
+    className="ResultsList__items"
+  />
+</div>
+`;

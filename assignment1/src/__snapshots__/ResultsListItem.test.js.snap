@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ResultsListItem /> renders correctly 1`] = `
+<div
+  className="ResultsListItem"
+>
+  <h3
+    className="ResultsListItem__name"
+  >
+    Foo
+  </h3>
+  <h4
+    className="ResultsListItem__venue"
+  >
+    Bar
+  </h4>
+  <div
+    className="ResultsListItem__city"
+  >
+    Wonderland
+  </div>
+</div>
+`;

@@ -11,10 +11,14 @@ import { API_URL } from './constants';
 describe('<App />', () => {
   const rows = [{
     id: 1,
-    name: 'Foo',
+    name: 'Foo 1',
+    location_name: 'Bar',
+    location_city: 'Wonderland',
   }, {
     id: 2,
-    name: 'Bar',
+    name: 'Foo 2',
+    location_name: 'Bar',
+    location_city: 'Wonderland',
   }];
 
   beforeEach(() => {

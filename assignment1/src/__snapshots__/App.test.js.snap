@@ -4,11 +4,60 @@ exports[`<App /> renders correctly 1`] = `
 <div
   className="App"
 >
-  <div>
-    Foo
-  </div>
-  <div>
-    Bar
+  <div
+    className="App__aside"
+  >
+    <div
+      className="ResultsList"
+    >
+      <h2
+        className="ResultsList__title"
+      >
+        Result List
+      </h2>
+      <div
+        className="ResultsList__items"
+      >
+        <div
+          className="ResultsListItem"
+        >
+          <h3
+            className="ResultsListItem__name"
+          >
+            Foo 1
+          </h3>
+          <h4
+            className="ResultsListItem__venue"
+          >
+            Bar
+          </h4>
+          <div
+            className="ResultsListItem__city"
+          >
+            Wonderland
+          </div>
+        </div>
+        <div
+          className="ResultsListItem"
+        >
+          <h3
+            className="ResultsListItem__name"
+          >
+            Foo 2
+          </h3>
+          <h4
+            className="ResultsListItem__venue"
+          >
+            Bar
+          </h4>
+          <div
+            className="ResultsListItem__city"
+          >
+            Wonderland
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
