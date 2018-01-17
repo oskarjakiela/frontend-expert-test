@@ -1,18 +1,27 @@
+import axios from 'axios';
+import { compose, map, pathOr, pick } from 'ramda';
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
 import './App.css';
+import { API_URL } from './constants';
+
 
 class App extends Component {
+  componentDidMount() {
+    axios.get(API_URL)
+      .then(pick(['data']))
+      .then((newState) => this.setState(newState));
+  }
+
   render() {
+    const renderResults = compose(
+      map(({ id, name }) => <div key={id}>{ name }</div>),
+      pathOr([], ['data', 'rows'])
+    );
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        { renderResults(this.state) }
       </div>
     );
   }

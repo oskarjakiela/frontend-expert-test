@@ -1,9 +1,54 @@
+import axios from 'axios'
+import moxios from 'moxios'
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import { render, unmountComponentAtNode } from 'react-dom';
+import renderer from 'react-test-renderer';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+import App from './App';
+import { API_URL } from './constants';
+
+
+describe('<App />', () => {
+  const rows = [{
+    id: 1,
+    name: 'Foo',
+  }, {
+    id: 2,
+    name: 'Bar',
+  }];
+
+  beforeEach(() => {
+    moxios.install();
+
+    moxios.stubRequest(API_URL, {
+      status: 200,
+      response: { rows },
+    })
+  });
+
+  afterEach(() => {
+    moxios.uninstall();
+  });
+
+  it('renders without crashing', (done) => {
+    const div = document.createElement('div');
+
+    render(<App />, div);
+
+    moxios.wait(() => {
+      unmountComponentAtNode(div);
+      done();
+    });
+  });
+
+  it('renders correctly', (done) => {
+    const component = renderer.create(<App />)
+
+    moxios.wait(() => {
+      const tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+      done();
+    });
+  });
+
 });
