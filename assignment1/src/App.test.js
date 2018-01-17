@@ -14,11 +14,13 @@ describe('<App />', () => {
     name: 'Foo 1',
     location_name: 'Bar',
     location_city: 'Wonderland',
+    coordinate: [0, 0],
   }, {
     id: 2,
     name: 'Foo 2',
     location_name: 'Bar',
     location_city: 'Wonderland',
+    coordinate: [1, 1],
   }];
 
   beforeEach(() => {

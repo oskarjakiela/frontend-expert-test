@@ -1,14 +1,17 @@
 import axios from 'axios';
-import { compose, map, pathOr, pick } from 'ramda';
+import { compose, map, pathOr, pick, prop, zipObj } from 'ramda';
 import { renameKeys } from 'ramda-adjunct';
 import React, { Component } from 'react';
 
 import './App.css';
 import { API_URL } from './constants';
 import ResultsList from './ResultsList';
+import ResultsMap from './ResultsMap';
 
 
 const mapResponseToState = (response) => {
+  const rows = pathOr([], ['data', 'rows'], response)
+
   const items = compose(
     map(compose(
       renameKeys({
@@ -16,12 +19,18 @@ const mapResponseToState = (response) => {
         location_city: 'city',
         location_name: 'venue',
       }),
-      pick(['id', 'location_city', 'location_name', 'name'])),
-    ),
-    pathOr([], ['data', 'rows']),
-  )(response);
+      pick(['id', 'location_city', 'location_name', 'name'])
+    )),
+  )(rows);
 
-  return { items }
+  const markers = compose(
+    map(compose(
+      zipObj(['lat', 'lng']),
+      prop('coordinate')
+    )),
+  )(rows);
+
+  return { items, markers };
 };
 
 class App extends Component {
@@ -37,12 +46,20 @@ class App extends Component {
   }
 
   render() {
-    const { items } = this.state;
+    const { items, markers } = this.state;
 
     return (
       <div className="App">
         <div className="App__aside">
-          <ResultsList items={items} />
+          <ResultsList
+            items={items}
+          />
+        </div>
+
+        <div className="App__main">
+          <ResultsMap
+            markers={markers}
+          />
         </div>
       </div>
     );

@@ -59,5 +59,17 @@ exports[`<App /> renders correctly 1`] = `
       </div>
     </div>
   </div>
+  <div
+    className="App__main"
+  >
+    <div
+      className="ResultMap__GoogleMap__element"
+    >
+      <div
+        className="ResultMap__GoogleMap__element"
+      />
+      <div />
+    </div>
+  </div>
 </div>
 `;

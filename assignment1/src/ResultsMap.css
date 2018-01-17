@@ -1,0 +1,13 @@
+.ResultsMap {
+}
+
+.ResultMap__GoogleMap__element {
+  height: 100%;
+}
+
+@media all and (max-width: 736px) {
+  .ResultMap__GoogleMap__element {
+    height: 100vw;
+    max-height: 50vh;
+  }
+}
