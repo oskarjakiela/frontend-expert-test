@@ -1,2 +1,12 @@
 .App {
+  display: flex;
+}
+
+.App__aside {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  width: 20%;
+}
+
+.App__main {
+  width: 80%;
 }

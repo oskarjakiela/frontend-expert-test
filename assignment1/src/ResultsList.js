@@ -6,34 +6,24 @@ import './ResultsList.css';
 import ResultsListItem from './ResultsListItem';
 
 
-const ResultsList = ({ items }) => {
-  const renderResultsListItem = map(({
-    id,
-    name,
-    location_city,
-    location_name
-  }) => (
-    <ResultsListItem
-      key={id}
-      city={location_city}
-      name={name}
-      venue={location_name}
-    />
-  ));
+const ResultsList = ({ items }) => (
+  <div className="ResultsList">
+    <h2 className="ResultsList__title">Result List</h2>
 
-  return (
-    <div className="ResultsList">
-      <h2 className="ResultsList__title">Result List</h2>
-
-      <div className="ResultsList__items">
-        {renderResultsListItem(items)}
-      </div>
+    <div className="ResultsList__items">
+      {map(item => (<ResultsListItem {...item} />), items)}
     </div>
-  );
-};
+  </div>
+);
 
 ResultsList.propTypes = {
-  items: PropTypes.array.isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      city: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      venue: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default ResultsList;
