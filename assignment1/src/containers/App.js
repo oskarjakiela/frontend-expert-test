@@ -1,12 +1,11 @@
-import axios from 'axios';
 import { compose, map, pathOr, pick, prop, zipObj } from 'ramda';
 import { renameKeys } from 'ramda-adjunct';
 import React, { Component } from 'react';
 
 import './App.css';
-import { API_URL } from './constants';
-import ResultsList from './ResultsList';
-import ResultsMap from './ResultsMap';
+import { getResults } from './../core/api';
+import ResultsList from './../components/ResultsList';
+import ResultsMap from './../components/ResultsMap';
 
 
 const mapResponseToState = (response) => {
@@ -40,7 +39,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get(API_URL)
+    getResults()
       .then(mapResponseToState)
       .then((newState) => this.setState(newState));
   }

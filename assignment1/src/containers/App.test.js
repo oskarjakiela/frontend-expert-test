@@ -1,11 +1,10 @@
-import axios from 'axios'
-import moxios from 'moxios'
+import moxios from 'moxios';
 import React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 import renderer from 'react-test-renderer';
 
 import App from './App';
-import { API_URL } from './constants';
+import { API_URL } from './../core/constants';
 
 
 describe('<App />', () => {
